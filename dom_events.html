@@ -7,23 +7,37 @@
     <title>DOM Events</title>
 </head>
 <body>
-    <button style="margin:2em; padding:1em; font-size:2em">Click me</button>
+    <div id="button-exer" style="height:25vh">
+        <button style="margin:2em; padding:1em; font-size:2em">Click me</button>
+    </div>
+
+    <div id="score-keeper">
+        <h1><span id="player1">0</span> to <span id="player2">0</span></h1><br>
+        <p>Playing to: <span id="points">5</span></p>
+        <input type="text" name="" id=""> 
+        <button id="btn-player1">Player 1</button>
+        <button id="btn-player2">Player 2</button>
+        <button id="reset">Reset</button>
+
+    </div>
 
     <script>
+        //Color changing button
         const b = document.querySelector("button");
         let isClicked = true;
 
         b.addEventListener("click", function(){
-            const body = document.querySelector("body");
-            
+            const colorDiv = document.querySelector("#button-exer");          
             if(isClicked){
-                body.style.backgroundColor = "red";
-                isClicked = false;
+                colorDiv.style.backgroundColor = "red";
+                isClicked = !isClicked;
             } else {
-                body.style.backgroundColor = "white";
-                isClicked = true;
+                colorDiv.style.backgroundColor = "green";
+                isClicked = !isClicked;
             }
         });
+
+        //Score Keeper App
     </script>
 </body>
 </html>
