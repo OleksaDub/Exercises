@@ -7,9 +7,23 @@
     <title>DOM Events</title>
 </head>
 <body>
-    
+    <button style="margin:2em; padding:1em; font-size:2em">Click me</button>
+
     <script>
-        
+        const b = document.querySelector("button");
+        let isClicked = true;
+
+        b.addEventListener("click", function(){
+            const body = document.querySelector("body");
+            
+            if(isClicked){
+                body.style.backgroundColor = "red";
+                isClicked = false;
+            } else {
+                body.style.backgroundColor = "white";
+                isClicked = true;
+            }
+        });
     </script>
 </body>
 </html>
