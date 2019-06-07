@@ -12,9 +12,9 @@
     </div>
 
     <div id="score-keeper">
-        <h1><span id="player1">0</span> to <span id="player2">0</span></h1><br>
-        <p>Playing to: <span id="points">5</span></p>
-        <input type="text" name="" id=""> 
+        <h1><span id="player1"></span> to <span id="player2"></span></h1><br>
+        <p>Playing to: <span id="points"></span></p>
+        <input type="number" name="" id="highscore"> 
         <button id="btn-player1">Player 1</button>
         <button id="btn-player2">Player 2</button>
         <button id="reset">Reset</button>
@@ -38,6 +38,60 @@
         });
 
         //Score Keeper App
+        let btnP1  = document.getElementById("btn-player1"),
+            btnP2  = document.getElementById("btn-player2"),
+            spanP1 = document.getElementById("player1"),
+            spanP2 = document.getElementById("player2"),
+            reset  = document.getElementById("reset"),
+            highScoreInp = document.getElementById("highscore");
+
+        let p1score    = 0,
+            p2score    = 0,
+            highScore  = 5,
+            isGameOver = false;
+
+        btnP1.addEventListener("click", function(){
+            if(!isGameOver){
+                p1score++;
+                spanP1.innerText = p1score;
+
+                if(p1score == highScore){
+                    isGameOver = true;
+                    spanP1.style.color = "green";
+                }
+            }     
+        });
+
+        btnP2.addEventListener("click", function(){
+            if(!isGameOver){
+                p2score++;
+                spanP2.innerText = p2score;
+
+                if(p2score == highScore){
+                    isGameOver = true;
+                    spanP2.style.color = "green";
+                }
+            }
+        });
+
+        reset.addEventListener("click", refreshScore);
+
+        highScoreInp.addEventListener("input", function(){
+            highScore = this.value;
+            refreshScore();
+        });
+
+        function refreshScore(){
+            document.getElementById("points").innerText = highScore;
+            p1score = p2score = 0;
+            spanP1.innerText = p1score;
+            spanP2.innerText = p2score;
+            spanP1.style.color = null;
+            spanP2.style.color = null;
+            isGameOver = false;
+        }
+
+        refreshScore();
     </script>
 </body>
 </html>
