@@ -78,6 +78,7 @@
 
         highScoreInp.addEventListener("input", function(){
             highScore = this.value;
+            if(highScore < 0) highScore = this.value = 0;
             refreshScore();
         });
 
